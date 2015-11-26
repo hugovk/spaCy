@@ -24,7 +24,7 @@ install:
 
 # run tests
 script:
-  - "py.test spacy/ -x --cov pylast --cov-report term-missing"
+  - "py.test spacy/ -x --cov spacy --cov-report term-missing"
 
 after_success:
   - "pip install coveralls"
