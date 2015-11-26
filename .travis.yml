@@ -10,7 +10,7 @@ python:
 # install dependencies
 install:
   - "pip install --upgrade setuptools"
-  - "pip install cython fabric fabtools"
+  - "pip install cython fabric fabtools coverage"
   - "pip install -r requirements.txt"
   - "python setup.py build_ext --inplace"
   - "mkdir -p corpora/en"
@@ -24,4 +24,8 @@ install:
 
 # run tests
 script:
-  - "py.test spacy/ -x"
+  - "py.test spacy/ -x --cov pylast --cov-report term-missing"
+
+after_success:
+  - "pip install coveralls"
+  - "coveralls"
